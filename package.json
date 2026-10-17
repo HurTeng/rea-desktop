@@ -1,0 +1,83 @@
+{
+  "name": "rea-desktop",
+  "version": "0.1.0",
+  "description": "REA Desktop — 基于 REA 的本地逆向分析桌面客户端：把 207 个 MCP 分析工具做成可视化工作区（Electron / ASAR / PyInstaller / .NET / APK / WASM / SQLite / 抓包）",
+  "main": "./out/main/index.js",
+  "author": "",
+  "homepage": "https://github.com/HurTeng/rea-desktop",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HurTeng/rea-desktop.git"
+  },
+  "keywords": [
+    "rea",
+    "rea-desktop",
+    "reverse-engineering",
+    "decompiler",
+    "asar",
+    "electron",
+    "mcp",
+    "ai-agent",
+    "static-analysis",
+    "desktop-app"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint --cache .",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "check:model": "node scripts/check-model.mjs",
+    "start": "node scripts/launch-electron.mjs preview",
+    "dev": "node scripts/launch-electron.mjs dev",
+    "build": "electron-vite build",
+    "build:unpack": "npm run typecheck && npm run build && electron-builder --dir",
+    "build:mac": "npm run typecheck && npm run build && electron-builder --mac",
+    "build:win": "npm run typecheck && npm run build && electron-builder --win",
+    "format:check": "prettier --check .",
+    "prepare:runtime": "node scripts/prepare-runtime.mjs",
+    "predev": "npm run prepare:runtime",
+    "prebuild": "npm run prepare:runtime",
+    "prestart": "npm run prepare:runtime",
+    "check:capabilities": "node scripts/check-capabilities.mjs"
+  },
+  "dependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
+    "@electron/asar": "^4.0.1",
+    "@modelcontextprotocol/client": "2.3.1",
+    "lucide-react": "1.56.0",
+    "openpgp": "6.3.2",
+    "rea-agents": "6.5.0",
+    "react-markdown": "10.1.0",
+    "smol-toml": "^1.9.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@electron-toolkit/eslint-config-prettier": "^3.0.0",
+    "@electron-toolkit/eslint-config-ts": "^3.1.0",
+    "@electron-toolkit/tsconfig": "^2.0.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "electron": "44.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^5.0.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "prettier": "^3.7.4",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.6"
+  },
+  "packageManager": "npm@11.13.0",
+  "engines": {
+    "node": "^24.15.0 || >=26.0.0"
+  },
+  "private": true
+}

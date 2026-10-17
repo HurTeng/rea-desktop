@@ -1,0 +1,18 @@
+node_modules
+dist
+out
+.DS_Store
+.eslintcache
+*.log*
+.env
+.env.*
+!.env.example
+resources/runtime/
+*.tsbuildinfo
+
+# 编辑器 / IDE 配置
+.vscode/
+.idea/
+
+docs/*
+!docs/ui/

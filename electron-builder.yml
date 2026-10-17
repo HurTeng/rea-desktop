@@ -1,0 +1,37 @@
+appId: tools.rea.desktop
+productName: REA Desktop
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**/*
+  - package.json
+  - node_modules/rea-agents/desktop-source/**/*
+asarUnpack:
+  - node_modules/**
+extraResources:
+  - from: resources/analysis
+    to: analysis
+  - from: resources/runtime
+    to: runtime
+mac:
+  target:
+    - dmg
+    - zip
+  artifactName: REA-Desktop-${version}-macos-${arch}.${ext}
+  category: public.app-category.developer-tools
+  entitlementsInherit: build/entitlements.mac.plist
+  notarize: false
+win:
+  executableName: rea-desktop
+  target:
+    - nsis
+    - portable
+nsis:
+  artifactName: REA-Desktop-${version}-windows-${arch}-setup.${ext}
+portable:
+  artifactName: REA-Desktop-${version}-windows-${arch}-portable.${ext}
+linux:
+  target: AppImage
+  category: Development
+npmRebuild: false
